@@ -29,6 +29,14 @@
 
 ### Ответ к заданию 1:
 
+```
+select distinct district as Район
+from address
+where district like 'K%'
+and district like '%a'
+and district not like '% %';
+```
+
 ---
 
 ### Задание 2
@@ -39,6 +47,12 @@
 
 ### Ответ к заданию 2:
 
+```
+select * from payment 
+where payment_date between '2005-06-15' and '2005-06-18 23:59:59'
+and amount > 10;
+```
+
 ---
 
 ### Задание 3
@@ -48,6 +62,11 @@
 ---
 
 ### Ответ к заданию 3:
+
+```
+select * from rental 
+order by rental_date desc limit 5;
+```
 
 ---
 
@@ -62,6 +81,13 @@
 ---
 
 ### Ответ к заданию 4:
+
+```
+SELECT * 
+FROM customer
+WHERE active > 0
+  AND (first_name) = 'kelly' OR (first_name) = 'willie'
+```
 
 ---
 
