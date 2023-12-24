@@ -83,10 +83,12 @@ order by rental_date desc limit 5;
 ### Ответ к заданию 4:
 
 ```
-SELECT * 
-FROM customer
-WHERE active > 0
-  AND (first_name) = 'kelly' OR (first_name) = 'willie'
+select *
+where active > 0
+and (first_name) = 'Willie' or (first_name) = 'Kelly'
+select lower(replace(first_name, 'll', 'pp'))
+from customer
+
 ```
 
 ---
