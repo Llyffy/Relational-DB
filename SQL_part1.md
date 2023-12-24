@@ -104,6 +104,13 @@ from customer
 
 ### Ответ к заданию 5:
 
+```
+select
+  substring_index(email, '@', 1) AS before_dash,
+  substring_index(email, '@', -1) AS after_dash
+from customer;
+```
+
 ---
 
 ### Задание 6*
@@ -113,5 +120,9 @@ from customer
 ---
 
 ### Ответ к заданию 6:
+
+```
+
+```
 
 ---
