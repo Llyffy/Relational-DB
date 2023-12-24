@@ -106,8 +106,8 @@ from customer
 
 ```
 select
-  substring_index(email, '@', 1) AS before_dash,
-  substring_index(email, '@', -1) AS after_dash
+  substring_index(email, '@', 1) AS first_last_name,
+  substring_index(email, '@', -1) AS email
 from customer;
 ```
 
