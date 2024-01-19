@@ -83,10 +83,12 @@ order by rental_date desc limit 5;
 ### Ответ к заданию 4:
 
 ```
-SELECT LOWER(REPLACE(first_name, 'll', 'pp')) AS lower_first_name
-FROM customer
-WHERE active > 0
-AND first_name = 'Kelly' OR first_name = 'Willie';
+select first_name,
+	lower(first_name) as lower_first_name,
+	replace(first_name, 'LL', 'PP') as replaced_first_name
+from customer
+where active > 0
+and (first_name = 'Kelly' or first_name = 'Willie');
 ```
 
 ---
