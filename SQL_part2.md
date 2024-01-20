@@ -30,6 +30,9 @@
 
 ### Ответ к заданию 1:
 
+```
+
+```
 
 ---
 
@@ -41,6 +44,11 @@
 
 ### Ответ к заданию 2:
 
+```
+select count(*) as movie_count
+from film
+where length > (select avg(length) from film);
+```
 
 ---
 
@@ -52,6 +60,9 @@
 
 ### Ответ к заданию 3:
 
+```
+
+```
 
 ---
 
