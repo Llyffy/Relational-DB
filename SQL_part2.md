@@ -31,9 +31,7 @@
 ### Ответ к заданию 1:
 
 ```
-select
-  s.first_name AS employee_first_name,
-  s.last_name AS employee_last_name,
+select concat(s.first_name, ' ', s.last_name),
   s.address_id AS store_city,
   COUNT(c.customer_id) AS customer_count
 from staff s
