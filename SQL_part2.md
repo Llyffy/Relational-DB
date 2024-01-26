@@ -31,7 +31,16 @@
 ### Ответ к заданию 1:
 
 ```
-
+select
+  s.first_name AS employee_first_name,
+  s.last_name AS employee_last_name,
+  s.address_id AS store_city,
+  COUNT(c.customer_id) AS customer_count
+from staff s
+join stores st ON s.store_id = st.store_id
+right join customers c ON s.store_id = c.store_id
+group bys.first_name, s.last_name, st.city
+having customer_count > 300;
 ```
 
 ---
