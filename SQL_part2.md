@@ -31,14 +31,17 @@
 ### Ответ к заданию 1:
 
 ```
-select concat(s.first_name, ' ', s.last_name),
-  s.address_id AS store_city,
-  COUNT(c.customer_id) AS customer_count
-from staff s
-join stores st ON s.store_id = st.store_id
-right join customers c ON s.store_id = c.store_id
-group bys.first_name, s.last_name, st.city
-having customer_count > 300;
+select concat(s.first_name, ' ', s.last_name) as full_name,
+ count(c.customer_id) as customer_count,
+ ci.city as city_name
+ from staff s
+ join store st ON s.store_id = st.store_id
+ join address ad ON st.address_id = ad.address_id
+ join customer c ON s.staff_id = c.store_id
+ join city ci on ad.address_id = ci.city_id
+ GROUP BY s.staff_id, st.store_id, ad.address_id, ci.city
+ having customer_count > 300
+ order by city_name;
 ```
 
 ---
@@ -68,7 +71,14 @@ where length > (select avg(length) from film);
 ### Ответ к заданию 3:
 
 ```
-
+select extract(month from payment_date) as payment_month,
+sum(amount) as total_payments,
+count(p.rental_id) as rental_count
+from payment p
+JOIN rental ON EXTRACT(MONTH FROM p.payment_date) = EXTRACT(MONTH FROM rental.rental_date)
+group by payment_month
+ORDER BY total_payments desc
+limit 1;
 ```
 
 ---
@@ -97,3 +107,9 @@ where length > (select avg(length) from film);
 
 ### Ответ к заданию 5:
 
+```
+SELECT i.inventory_id 
+FROM inventory i
+LEFT JOIN rental ON i.inventory_id = rental.inventory_id
+WHERE rental.inventory_id IS NULL;
+```
