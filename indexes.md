@@ -22,7 +22,9 @@
 ### Ответ к заданию 1:
 
 ```
-
+select (SUM(INDEX_LENGTH) / NULLIF(SUM(DATA_LENGTH + INDEX_LENGTH), 0)) * 100 AS index_percentage
+from information_schema.tables
+where table_schema = 'sakila';
 ```
 
 ### Задание 2
@@ -39,7 +41,13 @@ where date(p.payment_date) = '2005-07-30' and p.payment_date = r.rental_date and
 ### Ответ к заданию 2:
 
 ```
-
+select distinct concat(c.last_name, ' ', c.first_name) as customer_name, sum(p.amount) over (partition by c.customer_id, f.title) as total_amount
+from payment p
+join rental r on p.payment_date = r.rental_date and p.customer_id = r.customer_id
+join inventory i on r.inventory_id = i.inventory_id
+join film f on i.film_id = f.film_id
+join customer c on r.customer_id = c.customer_id
+where date(p.payment_date) = '2005-07-30';
 ```
 
 ## Дополнительные задания (со звёздочкой*)
